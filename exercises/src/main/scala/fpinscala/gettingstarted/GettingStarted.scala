@@ -35,14 +35,13 @@ object MyModule {
   }
 
   // Exercise 1: Write a function to compute the nth fibonacci number
-
   def fib(n: Int): Int = {
-    def loop(n: Int): Int =
-      if (n <= 0) 0
-      else if (n == 1) 1
-      else loop(n-2) + loop(n-1)
+    @annotation.tailrec
+    def loop(n: Int, prev: Int, cur: Int): Int =
+      if (n <= 0) prev
+      else loop(n-1, cur, cur+prev)
 
-    loop(n)
+    loop(n, 0, 1)
   }
 
 
