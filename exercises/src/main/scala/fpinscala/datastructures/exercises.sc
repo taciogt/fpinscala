@@ -40,9 +40,24 @@ init(List(1, 2))
 init(List(1, 2, 3))
 
 // exercise 3.8
-foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
+foldRight(List(1, 2, 3), Nil: List[Int])(Cons(_, _))
 
 // exercise 3.9
 length(List())
-length(List(1,2,3))
-length(List(1,2,3, 4))
+length(List(1, 2, 3))
+length(List(1, 2, 3, 4))
+
+// exercise 3.11
+sum(List(1, 3, 5, 7))
+sum2(List(1, 3, 5, 7))
+sum3(List(1, 3, 5, 7))
+sum3(List(2, 4, 6, 8))
+
+product(List(1, 3, 5, 7))
+product2(List(1, 3, 5, 7))
+product3(List(1, 3, 5, 7))
+product3(List(2, 4, 6, 8))
+
+length2(List(1))
+length2(List(1,2))
+length2(List(1,2,3))
