@@ -1,34 +1,40 @@
-import fpinscala.datastructures.List
+import fpinscala.datastructures._
+import fpinscala.datastructures.List._
 
 // exercise 3.1
 List.x
 
 // exercise 3.2
-List.tail(List())
-List.tail(List(1))
-List.tail(List(1, 2))
-List.tail(List(1, 2, 3))
+tail(List())
+tail(List(1))
+tail(List(1, 2))
+tail(List(1, 2, 3))
 
 // exercise 3.3
-List.setHead(List(), 0)
-List.setHead(List(1), 0)
-List.setHead(List(1, 2), 0)
-List.setHead(List(1, 2, 3), 0)
+setHead(List(), 0)
+setHead(List(1), 0)
+setHead(List(1, 2), 0)
+setHead(List(1, 2, 3), 0)
 
 // exercise 3.4
-List.drop(List(), 0)
-List.drop(List(1), 0)
-List.drop(List(1), 1)
-List.drop(List(1, 2), 0)
-List.drop(List(1, 2), 1)
-List.drop(List(1, 2, 3), 0)
-List.drop(List(1, 2, 3), 1)
-List.drop(List(1, 2, 3), 2)
-List.drop(List(1, 2, 3), 3)
+drop(List(), 0)
+drop(List(1), 0)
+drop(List(1), 1)
+drop(List(1, 2), 0)
+drop(List(1, 2), 1)
+drop(List(1, 2, 3), 0)
+drop(List(1, 2, 3), 1)
+drop(List(1, 2, 3), 2)
+drop(List(1, 2, 3), 3)
 
 // exercise 3.5
-List.dropWhile(List(1, 2, 3), (x: Int) => x <= 1)
-List.dropWhile(List(1, 2, 3), (x: Int) => x > 1)
-List.dropWhile(List(1, 2, 3, 4, 5, 6), (x: Int) => x > 1)
-List.dropWhile(List(1, 2, 3, 4, 5, 6), (x: Int) => x % 2 == 0)
-List.dropWhile(List(1, 2, 3, 4, 5, 6), (x: Int) => x <= 3)
+dropWhile(List(1, 2, 3), (x: Int) => x <= 1)
+dropWhile(List(1, 2, 3), (x: Int) => x > 1)
+dropWhile(List(1, 2, 3, 4, 5, 6), (x: Int) => x > 1)
+dropWhile(List(1, 2, 3, 4, 5, 6), (x: Int) => x % 2 == 0)
+dropWhile(List(1, 2, 3, 4, 5, 6), (x: Int) => x <= 3)
+
+// exercise 3.6
+init(List(1))
+init(List(1, 2))
+init(List(1, 2, 3))
