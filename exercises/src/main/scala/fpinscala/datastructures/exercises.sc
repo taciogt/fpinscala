@@ -38,3 +38,11 @@ dropWhile(List(1, 2, 3, 4, 5, 6), (x: Int) => x <= 3)
 init(List(1))
 init(List(1, 2))
 init(List(1, 2, 3))
+
+// exercise 3.8
+foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
+
+// exercise 3.9
+length(List())
+length(List(1,2,3))
+length(List(1,2,3, 4))
