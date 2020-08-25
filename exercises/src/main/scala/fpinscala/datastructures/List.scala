@@ -1,5 +1,7 @@
 package fpinscala.datastructures
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader
+
 sealed trait List[+A] // `List` data type, parameterized on a type, `A`
 case object Nil extends List[Nothing] // A `List` data constructor representing the empty list
 /* Another data constructor, representing nonempty lists. Note that `tail` is another `List[A]`,
@@ -100,6 +102,11 @@ object List { // `List` companion object. Contains functions for creating and wo
   def product3(ns: List[Int]): Int = foldLeft(ns, 1)(_ * _)
 
   def length2[A](l: List[A]): Int = foldLeft(l, 0)((acc, _) => acc + 1)
+
+  def reverse[A](l: List[A]): List[A] = l match {
+    case Nil => Nil
+    case Cons(h, t) => append(reverse(t), Cons(h, Nil))
+  }
 
   def map[A, B](l: List[A])(f: A => B): List[B] = ???
 

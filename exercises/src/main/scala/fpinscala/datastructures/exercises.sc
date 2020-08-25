@@ -61,3 +61,9 @@ product3(List(2, 4, 6, 8))
 length2(List(1))
 length2(List(1,2))
 length2(List(1,2,3))
+
+// exercise 3.12
+reverse(List())
+reverse(List(1))
+reverse(List(1, 2))
+reverse(List(1, 2, 3))
