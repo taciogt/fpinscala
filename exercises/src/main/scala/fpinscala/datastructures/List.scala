@@ -103,10 +103,7 @@ object List { // `List` companion object. Contains functions for creating and wo
 
   def length2[A](l: List[A]): Int = foldLeft(l, 0)((acc, _) => acc + 1)
 
-  def reverse[A](l: List[A]): List[A] = l match {
-    case Nil => Nil
-    case Cons(h, t) => append(reverse(t), Cons(h, Nil))
-  }
+  def reverse[A](l: List[A]): List[A] = foldLeft(l, List[A]())((acc, h) => Cons(h, acc))
 
   def map[A, B](l: List[A])(f: A => B): List[B] = ???
 
