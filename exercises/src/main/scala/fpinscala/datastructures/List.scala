@@ -51,7 +51,6 @@ object List { // `List` companion object. Contains functions for creating and wo
   def product2(ns: List[Double]) =
     foldRight(ns, 1.0)(_ * _) // `_ * _` is more concise notation for `(x,y) => x * y`; see sidebar
 
-
   def tail[A](l: List[A]): List[A] =
     l match {
       case Nil => Nil
@@ -94,8 +93,18 @@ object List { // `List` companion object. Contains functions for creating and wo
   def foldLeft[A, B](l: List[A], z: B)(f: (B, A) => B): B =
     l match {
       case Nil => z
-      case Cons(x, xs) => foldLeft(xs, f(z,x))(f)
+      case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
     }
+
+  def foldLeftViaFoldRight[A, B](l: List[A], z: B)(f: (B, A) => B): B = ???
+
+  def appendViaFoldLeft[A](l: List[A], x: A): List[A] = ???
+
+  def appendViaFoldRight[A](l: List[A], x: A): List[A] =
+    foldRight(l, Cons(x, Nil))((a, b) => Cons(a, b))
+
+  def concat[A](l: List[List[A]]): List[A] =
+    foldRight(l, Nil: List[A])(append)
 
   def sum3(ns: List[Int]): Int = foldLeft(ns, 0)(_ + _)
 
@@ -105,6 +114,27 @@ object List { // `List` companion object. Contains functions for creating and wo
 
   def reverse[A](l: List[A]): List[A] = foldLeft(l, List[A]())((acc, h) => Cons(h, acc))
 
-  def map[A, B](l: List[A])(f: A => B): List[B] = ???
+  def map[A, B](l: List[A])(f: A => B): List[B] =
+    l match {
+      case Nil => Nil
+      case Cons(x, xs) => Cons(f(x), map(xs)(f))
+    }
+
+  def addOne(l: List[Int]): List[Int] = map(l)(_ + 1)
+
+  def doubleToString(l: List[Double]): List[String] = map(l)(_.toString)
+
+  def filter[A](l: List[A])(f: A => Boolean): List[A] =
+    l match {
+      case Nil => Nil
+      case Cons(h, t) if f(h) => Cons(h, filter(t)(f))
+      case Cons(_, t) => filter(t)(f)
+    }
+
+  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
+    as match {
+      case Nil => Nil
+      case Cons(h, t) => append(f(h), flatMap(t)(f))
+    }
 
 }

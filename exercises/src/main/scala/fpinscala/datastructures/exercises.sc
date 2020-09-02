@@ -59,11 +59,33 @@ product3(List(1, 3, 5, 7))
 product3(List(2, 4, 6, 8))
 
 length2(List(1))
-length2(List(1,2))
-length2(List(1,2,3))
+length2(List(1, 2))
+length2(List(1, 2, 3))
 
 // exercise 3.12
 reverse(List())
 reverse(List(1))
 reverse(List(1, 2))
 reverse(List(1, 2, 3))
+
+// exercise 3.13
+// TODO
+
+// exercise 3.14
+//appendViaFoldLeft(List(1, 2, 3), 4)
+appendViaFoldRight(List(1, 2, 3), 4)
+
+// exercise 3.15
+concat(List(List(1, 2, 3), List(4, 5, 6)))
+
+// exercise 3.16
+addOne(List(1, 3, 5))
+
+// exercise 3.17
+doubleToString(List(1, 2, 3))
+
+// exercise 3.19
+filter(List(1, 2, 3, 4, 5, 6, 7, 8, 9))(_ % 3 != 0)
+
+// exercise 3.20
+flatMap(List(1,2,3))(a => List(a, a*2, a))
