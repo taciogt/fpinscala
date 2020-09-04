@@ -88,4 +88,13 @@ doubleToString(List(1, 2, 3))
 filter(List(1, 2, 3, 4, 5, 6, 7, 8, 9))(_ % 3 != 0)
 
 // exercise 3.20
-flatMap(List(1,2,3))(a => List(a, a*2, a))
+flatMap(List(1, 2, 3))(a => List(a, a * 2, a))
+
+// exercise 3.21
+filterViaFlatMap(List(1, 2, 3, 4))(_ % 2 == 0)
+
+// exercise 3.22
+addPairwise(List(1, 2, 3), List(4, 5, 6))
+
+// exercise 3.23
+zipWith(List("a", "b", "c"), List(1, 2, 3))((c, i) => c*i)

@@ -45,6 +45,19 @@ object List { // `List` companion object. Contains functions for creating and wo
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
     }
 
+  @annotation.tailrec
+  def foldLeft[A, B](l: List[A], z: B)(f: (B, A) => B): B =
+    l match {
+      case Nil => z
+      case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
+    }
+
+  def foldRightViaFoldLeft[A, B](as: List[A], z: B)(f: (A, B) => B): B =
+    foldLeft(reverse(as), z)((b, a) => f(a, b))
+
+  def foldLeftViaFoldRight[A, B](l: List[A], z: B)(f: (B, A) => B): B =
+    foldRight(reverse(l), z)((a, b) => f(b, a))
+
   def sum2(ns: List[Int]) =
     foldRight(ns, 0)((x, y) => x + y)
 
@@ -89,15 +102,6 @@ object List { // `List` companion object. Contains functions for creating and wo
   def length[A](l: List[A]): Int =
     foldRight(l, 0)((_, acc) => acc + 1)
 
-  @annotation.tailrec
-  def foldLeft[A, B](l: List[A], z: B)(f: (B, A) => B): B =
-    l match {
-      case Nil => z
-      case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
-    }
-
-  def foldLeftViaFoldRight[A, B](l: List[A], z: B)(f: (B, A) => B): B = ???
-
   def appendViaFoldLeft[A](l: List[A], x: A): List[A] = ???
 
   def appendViaFoldRight[A](l: List[A], x: A): List[A] =
@@ -135,6 +139,23 @@ object List { // `List` companion object. Contains functions for creating and wo
     as match {
       case Nil => Nil
       case Cons(h, t) => append(f(h), flatMap(t)(f))
+    }
+
+  def filterViaFlatMap[A](l: List[A])(f: A => Boolean): List[A] =
+    flatMap(l)((a: A) => if (f(a)) List(a) else Nil)
+
+  def addPairwise(l1: List[Int], l2: List[Int]): List[Int] =
+    (l1, l2) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (Cons(h1, t1), Cons (h2, t2)) => Cons (h1 + h2, addPairwise(t1, t2))
+  }
+
+  def zipWith[A, B, C](as: List[A], bs: List[B])(f: (A, B) => C): List[C] =
+    (as, bs) match {
+      case (Nil, _) => Nil
+      case (_, Nil) => Nil
+      case (Cons(ha, ta), Cons(hb, tb)) => Cons(f(ha, hb), zipWith(ta, tb)(f))
     }
 
 }
