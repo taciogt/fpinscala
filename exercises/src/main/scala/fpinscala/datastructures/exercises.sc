@@ -97,4 +97,11 @@ filterViaFlatMap(List(1, 2, 3, 4))(_ % 2 == 0)
 addPairwise(List(1, 2, 3), List(4, 5, 6))
 
 // exercise 3.23
-zipWith(List("a", "b", "c"), List(1, 2, 3))((c, i) => c*i)
+zipWith(List("a", "b", "c"), List(1, 2, 3))((c, i) => c * i)
+
+// exercise 3.24
+hasSubsequence(List(1, 2, 3, 4), List(1, 2))
+hasSubsequence(List(1, 2, 3, 4), List(1, 5))
+hasSubsequence(List(1, 2, 3, 4), List(1, 3))
+hasSubsequence(List(1, 2, 3, 4), List(2, 3))
+hasSubsequence(List(1, 2, 3, 4), List(4))

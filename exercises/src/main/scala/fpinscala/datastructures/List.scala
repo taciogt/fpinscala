@@ -158,4 +158,22 @@ object List { // `List` companion object. Contains functions for creating and wo
       case (Cons(ha, ta), Cons(hb, tb)) => Cons(f(ha, hb), zipWith(ta, tb)(f))
     }
 
+  def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean = {
+    def exactMatch(supChunk: List[A], subChunk: List[A]): Boolean = {
+      (supChunk, subChunk) match {
+        case (Nil, Nil) => true
+        case (Nil, _) => false
+        case (_, Nil) => true
+        case (Cons(supH, supT), Cons(subH, subT)) => (supH == subH && exactMatch(supT, subT))
+      }
+    }
+
+    (sup, sub) match {
+      case (Nil, Nil) => true
+      case (Nil, _) => false
+      case (_, Nil) => true
+      case (Cons(supH, supT), Cons(subH, subT)) => (supH == subH && exactMatch(supT, subT)) || hasSubsequence(supT, sub)
+    }
+  }
+
 }
