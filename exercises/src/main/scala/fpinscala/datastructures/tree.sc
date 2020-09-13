@@ -10,3 +10,9 @@ size(Branch(Leaf(1), Leaf(2)))
 maximum(Leaf(1))
 maximum(Branch(Leaf(1), Leaf(2)))
 maximum(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3)))
+
+// exercise 3.27
+depth(Leaf(1))
+depth(Branch(Leaf(1), Leaf(2)))
+depth(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3)))
+depth(Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(1), Leaf(2))))
