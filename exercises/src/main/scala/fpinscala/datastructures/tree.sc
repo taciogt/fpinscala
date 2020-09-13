@@ -16,3 +16,6 @@ depth(Leaf(1))
 depth(Branch(Leaf(1), Leaf(2)))
 depth(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3)))
 depth(Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(1), Leaf(2))))
+
+// exercise 3.28
+map(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3)))(_ * 3)
