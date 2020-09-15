@@ -19,3 +19,15 @@ depth(Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(1), Leaf(2))))
 
 // exercise 3.28
 map(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3)))(_ * 3)
+
+// exercise 3.29
+sizeViaFold(Leaf(1))
+sizeViaFold(Branch(Leaf(1), Leaf(2)))
+sizeViaFold(Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(1), Leaf(2))))
+
+maximumViaFold(Branch(Branch(Leaf(3), Leaf(4)), Branch(Leaf(5), Leaf(2))))
+
+depthViaFold(Leaf(1))
+depthViaFold(Branch(Leaf(1), Branch(Leaf(1), Leaf(2))))
+
+mapViaFold(Branch(Leaf(1), Branch(Leaf(2), Leaf(3))))(_ * 2)
