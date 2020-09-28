@@ -51,7 +51,9 @@ object Option {
   def mean(xs: Seq[Double]): Option[Double] =
     if (xs.isEmpty) None
     else Some(xs.sum / xs.length)
-  def variance(xs: Seq[Double]): Option[Double] = ???
+
+  def variance(xs: Seq[Double]): Option[Double] =
+    mean(xs).map((m) => xs.map((x) => math.pow(x-m, 2))).flatMap(mean)
 
   def map2[A,B,C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = ???
 
