@@ -14,6 +14,7 @@ none.map((x) => x + 1)
 pi.getOrElse(3)
 noneDouble.getOrElse(3)
 
+variance(Seq(1,2,3,4))
 variance(Seq(1,2,3,4,3))
 //one.flatMap(_ + 1)
 //none.flatMap((x) => x + 1)
